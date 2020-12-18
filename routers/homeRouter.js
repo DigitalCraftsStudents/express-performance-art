@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { 
     homeHandler
-} = require('../router/homeController');
+} = require('../controllers/homeController');
 
 router.get('/', homeHandler);
 
