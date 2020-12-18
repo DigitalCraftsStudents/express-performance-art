@@ -14,15 +14,24 @@ app.set('view engine', 'html');
 
 const PORT = 3000;
 const homeRouter = require('./routers/homeRouter');
-const data = require('./data.json');
+const movieRouter = require('./routers/movieRouter');
+// const data = require('./data.json');
 app.use(logger);
 app.use('/', homeRouter);
-
+app.use('/films', movieRouter);
 // my goal is to render the data (from data.json)
 // to a template
-app.get('/movies', (req, res) => {
-    // res.send(data);
-    console.log(data);
+// app.get('/movies', (req, res) => {
+//     // res.send(data);
+//     console.log(data);
+
+//     res.render('movieList', {
+//         locals: {
+//             movies: data
+//         }
+//     });
+// });
+    // previously, this was in my `app.get('/movies')` handler:
     // const movieHtmlArray = [];
     // for (let d of data) {
     //     movieHtmlArray.push(`<p>${d.title}</p>`);
@@ -37,12 +46,6 @@ app.get('/movies', (req, res) => {
     // const movieHtmlString = data.map(d => `<p>!!${d.title}!!</p>`).join('');
     // console.log(movieHtmlString);
 
-    res.render('movieList', {
-        locals: {
-            movies: data
-        }
-    });
-});
 
 server.listen(PORT, () => {
     console.log(`Listening at port ${PORT}`);
